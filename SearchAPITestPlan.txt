@@ -1,0 +1,95 @@
+TEST PLAN FOR API SEARCH
+================================
+@author: nfalor
+
+Problem: Write a test plan for the documented iTunes Search API
+
+Write Java automation that will make requests to this API:
+Include TestNG or JUnit classes with validations for the documented functional test cases
+	
+Solutions:
+
+Java Util class to store the reusable utility functions
+TestNG class to store each scenarios using Rest Assured BDD method
+Use DataProvider for storing the test data which include both positive and negative cases for verifications
+
+TOOLS:
+
+Coding Language - Java
+Rest API Testing Library - Rest Assured
+Unit Test Framework - TestNG
+Repository - GitHub
+Build automation tool - Maven
+Run the TestNG test suite and generate test reports - TestNG SureFire
+IDE for developing the Framework - Eclipse
+
+TEST CASES:
+
+	Validate response status code for the following scenarios:
+	----------------------------------------------------------
+		
+	Test case 1: all default data
+	
+	URI : https://itunes.apple.com/search?term=jack+johnson&country=US&media=all&limit=50"
+	Test Data : term=jack johnson, country=US, media=all, limit=50
+	
+	Test case 2: all valid data
+	
+	URI : https://itunes.apple.com/search?term=jack+johnson&country=DO&media=software&limit=100"
+	Test Data : term=jack johnson, country=DO, media=software, limit=100
+	
+	Test Case 3: mandatory field 'term' no value
+	
+	URI : https://itunes.apple.com/search?country=US&media=shortFilm&limit=150
+	Test Data : term="", country=US, media=shortFilm, limit=150
+	
+	Test Case 4: optional 'country' missing
+		
+	URI : https://itunes.apple.com/search?term=jack+johnson&media=ebook&limit=200
+	Test Data : term="jack johnson", country="", media=ebook, limit=200
+	
+	Test Case 5: invalid 'country' 
+		
+	URI : https://itunes.apple.com/search?term=jack+johnson&country=PPP&media=tvShow&limit=150
+	
+	Validate result count for the following scenarios:
+	--------------------------------------------------
+			
+	Test case 6: all default data
+	
+	URI : https://itunes.apple.com/search?term=jack+johnson&country=US&media=all&limit=50"
+	Test Data : term=jack johnson, country=US, media=all, limit=50
+	
+	Test case 7: all valid data
+	
+	URI : https://itunes.apple.com/search?term=jack+johnson&country=DO&media=software&limit=100"
+	Test Data : term=jack johnson, country=DO, media=software, limit=100
+	
+	Test Case 8: mandatory field 'term' no value
+	
+	URI : https://itunes.apple.com/search?country=IN&media=podcast&limit=150
+	Test Data : term="", country=IN, media=podcast, limit=150
+	
+	Test Case 9: optional 'country' missing
+		
+	URI : https://itunes.apple.com/search?term=jack+johnson&media=music&limit=150
+	Test Data : term="jack johnson", country="", media=music, limit=150
+	
+	Validate error message for the following scenarios:
+	---------------------------------------------------
+	
+	Test case 10: all valid data 
+	
+	URI : https://itunes.apple.com/search?term=jack+johnson&country=DO&media=software&limit=100"
+	Test Data : term=jack johnson, country=DO, media=software, limit=100
+	
+	Test Case 11: invalid country
+	
+	URI : https://itunes.apple.com/search?country=PPP&media=podcast&limit=150
+	Test Data : term="", country=PPP, media=podcast, limit=150
+	
+	Test Case 12: invalid media
+		
+	URI : https://itunes.apple.com/search?term=jack+johnson&country=US&media=pencil&limit=150
+	Test Data : term="jack johnson", country="US", media=pencil, limit=150
+	
